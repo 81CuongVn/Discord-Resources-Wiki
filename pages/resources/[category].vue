@@ -1,11 +1,15 @@
 <template>
-  <Resource v-for="resource in resources" :resource="resource"></Resource>
+  <ResourceVue v-for="resource in resources" :resource="resource"></ResourceVue>
 </template>
 
 <script setup lang="ts">
-import Resource from "../../components/Resource.vue";
+import ResourceVue from "../../components/Resource.vue";
+import { Resource } from "../../common/resource";
 
 const route = useRoute();
 
-const resources = await queryContent(route.fullPath).find();
+const { data: resources } = await useAsyncData(
+  `category-resources-${route.path}`,
+  () => queryContent<Resource>(route.path).find()
+);
 </script>

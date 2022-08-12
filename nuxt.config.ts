@@ -22,5 +22,9 @@ export default defineNuxtConfig({
   },
   typescript: {
     strict: true,
+    shim: false,
+  },
+  alias: {
+    "@vue/devtools-api": "@vue/devtools-api",
   },
 });
