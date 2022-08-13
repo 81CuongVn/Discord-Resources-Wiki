@@ -33,7 +33,9 @@ function resourceLoaderPlugin() {
 							children: [
 								{
 									type: 'strong',
-									children: [{type: 'text', value: `Link${resource.links.length !== 1 && 's'}: `}],
+									children: [
+										{type: 'text', value: `Link${resource.links.length !== 1 ? 's' : ''}: `},
+									],
 								},
 								{type: 'link', url: link.url, children: [{type: 'text', value: link.name}]},
 							],
