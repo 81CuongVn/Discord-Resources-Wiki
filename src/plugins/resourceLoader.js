@@ -16,12 +16,22 @@ function resourceLoaderPlugin() {
 
 			found = true;
 			return resources.flatMap((resource) => {
+				const descriptionLines = resource.description.split('\n');
 				quoteContent = [
 					{
 						type: 'paragraph',
 						children: [
 							{type: 'strong', children: [{type: 'text', value: 'Description: '}]},
-							{type: 'text', value: resource.description},
+							{type: 'text', value: descriptionLines[0]},
+							...descriptionLines.slice(1).flatMap((line) => [
+								{
+									type: 'break',
+								},
+								{
+									type: 'text',
+									value: line,
+								},
+							]),
 						],
 					},
 				];
