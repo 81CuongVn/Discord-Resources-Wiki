@@ -6,4 +6,4 @@ description: Offizielle Server im Besitz von Discord.
 
 # Offizielle Server
 
-{{resources:official-discord-servers:de}}
+{{resources:official-servers:de}}

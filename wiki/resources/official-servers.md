@@ -6,4 +6,4 @@ description: Official servers owned by discord.
 
 # Official Servers
 
-{{resources:official-discord-servers}}
+{{resources:official-servers}}
