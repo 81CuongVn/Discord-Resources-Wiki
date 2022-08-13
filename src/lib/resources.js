@@ -9,13 +9,23 @@ function loadResources(path, lang) {
 	const basePath = `./resources/${path}`;
 
 	for (dir of fs.readdirSync(basePath)) {
-		const resourceYaml = yaml.load(fs.readFileSync(`${basePath}/${dir}/resource.yaml`, 'utf8'));
+		if (!fs.statSync(`${basePath}/${dir}`).isDirectory()) continue;
+
+		const path = `${basePath}/${dir}/resource.yaml`;
+		const resourceYaml = yaml.load(fs.readFileSync(path, 'utf8'));
+		resourceYaml.missing_translation = false;
+		resourceYaml.base_path = basePath;
+		resourceYaml.resource_path = path;
 
 		if (lang && lang !== defaultLanguage) {
+			const langPath = `${basePath}/${dir}/${lang}.yaml`;
+			resourceYaml.translation_path = `${basePath}/${dir}/${lang}.yaml`;
 			try {
-				const langYaml = yaml.load(fs.readFileSync(`${basePath}/${dir}/${lang}.yaml`, 'utf8'));
+				const langYaml = yaml.load(fs.readFileSync(langPath, 'utf8'));
 				Object.assign(resourceYaml, langYaml);
-			} catch (e) {}
+			} catch {
+				resourceYaml.missing_translation = true;
+			}
 		}
 
 		resources.push(resourceYaml);
