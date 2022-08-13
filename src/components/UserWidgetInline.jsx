@@ -4,12 +4,14 @@ import styles from '../css/UserWidgetInline.module.css';
 import {useColorMode} from '@docusaurus/theme-common';
 
 export default function UserWidgetInline({data}) {
-	const {isDarkTheme} = useColorMode();
+	const {colorMode} = useColorMode();
 	function userName() {
 		if (data.type === 'discord') {
 			return (
 				<>
-					<span className={styles.userUsername} style={{color: isDarkTheme ? '#fff' : '#000'}}>
+					<span
+						className={styles.userUsername}
+						style={{color: colorMode === 'dark' ? '#fff' : '#000'}}>
 						{data.name}
 					</span>
 					<span className={styles.userDiscriminator}>#{data.discriminator}</span>
@@ -17,7 +19,9 @@ export default function UserWidgetInline({data}) {
 			);
 		} else {
 			return (
-				<span className={styles.userUsername} style={{color: isDarkTheme ? '#fff' : '#000'}}>
+				<span
+					className={styles.userUsername}
+					style={{color: colorMode === 'dark' ? '#fff' : '#000'}}>
 					{data.name}
 				</span>
 			);
@@ -56,7 +60,7 @@ export default function UserWidgetInline({data}) {
 			<span className={styles.container}>
 				<span
 					className={styles.widget}
-					style={{backgroundColor: isDarkTheme ? '#2f3136' : '#dadae0'}}>
+					style={{backgroundColor: colorMode === 'dark' ? '#2f3136' : '#dadae0'}}>
 					<img src={data.avatarUrl} alt='' className={styles.userAvatar} />
 					<span className={styles.userTag}>{userName()}</span>
 				</span>

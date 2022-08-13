@@ -8,6 +8,7 @@ const userWidgetInlinePlugin = require('./src/plugins/userWidgetInlinePlugin');
 const inviteWidgetPlugin = require('./src/plugins/inviteWidgetPlugin');
 const linebreakPlugins = require('./src/plugins/linebreakPlugin');
 const blogAuthorWidgetPlugin = require('./src/plugins/blogAuthorWidgetPlugin');
+const resourceLoader = require('./src/plugins/resourceLoader');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -23,9 +24,9 @@ const config = {
 	projectName: 'Discord-Resources-Wiki',
 
 	i18n: {
-		defaultLocale: "en",
-		locales: ["en", "fr", "de", "es", "tr"]
-	  },
+		defaultLocale: 'en',
+		locales: ['en', 'fr', 'de', 'es', 'tr'],
+	},
 
 	presets: [
 		[
@@ -37,7 +38,12 @@ const config = {
 					editUrl: 'https://github.com/Discord-Resources-Wiki/Discord-Resources-Wiki/edit/main/',
 					path: 'wiki',
 					routeBasePath: '/',
-					remarkPlugins: [linebreakPlugins, inviteWidgetPlugin, userWidgetInlinePlugin],
+					remarkPlugins: [
+						resourceLoader,
+						linebreakPlugins,
+						inviteWidgetPlugin,
+						userWidgetInlinePlugin,
+					],
 				},
 				blog: {
 					path: 'blog',
@@ -79,7 +85,7 @@ const config = {
 				},
 			],
 			colorMode: {
-				defaultMode: 'dark'
+				defaultMode: 'dark',
 			},
 			navbar: {
 				title: 'Discord Resources',
@@ -112,7 +118,7 @@ const config = {
 					{
 						type: 'localeDropdown',
 						position: 'right',
-					}
+					},
 				],
 			},
 			prism: {

@@ -5,7 +5,7 @@ import {useColorMode} from '@docusaurus/theme-common';
 
 export default function Tooltip({children, title, mode = 'hover'}) {
 	const [visible, setVisible] = useState(false);
-	const {isDarkTheme} = useColorMode();
+	const {colorMode} = useColorMode();
 	return (
 		<OutsideClickHandler onClickOutside={() => setVisible(false)}>
 			<span className={`${styles.container} ${mode === 'hover' ? styles.containerHover : ''}`}>
@@ -20,14 +20,14 @@ export default function Tooltip({children, title, mode = 'hover'}) {
 					<span
 						className={styles.popupText}
 						style={{
-							backgroundColor: isDarkTheme ? '#dadae0' : '#2f3136',
-							color: isDarkTheme ? '#000' : '#fff',
+							backgroundColor: colorMode === 'dark' ? '#dadae0' : '#2f3136',
+							color: colorMode === 'dark' ? '#000' : '#fff',
 						}}>
 						{title}
 					</span>
 					<span
 						className={styles.popupTriangle}
-						style={{borderTopColor: isDarkTheme ? '#dadae0' : '#2f3136'}}
+						style={{borderTopColor: colorMode === 'dark' ? '#dadae0' : '#2f3136'}}
 					/>
 				</span>
 			</span>
