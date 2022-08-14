@@ -1,0 +1,52 @@
+.resource {
+	padding: 10px 15px 10px 15px;
+	background-color: var(--ifm-menu-color-background-active);
+	border-radius: 10px;
+	margin-bottom: 20px;
+	border-left-color: var(--ifm-menu-color-active);
+	border-left-width: 4px;
+	border-left-style: solid;
+}
+
+.resourceTitle {
+	padding-top: 5px;
+}
+
+.resourceDescription {
+	color: lightgray;
+}
+
+.resourceLinks {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.resourceLink {
+	background-color: var(--docsearch-container-background);
+	padding: 5px 12px 5px 12px;
+	display: block;
+	border-radius: 5px;
+	color: white;
+	display: flex;
+	align-items: center;
+}
+
+.resourceLink svg {
+	margin-left: 5px;
+	fill: white;
+}
+
+.resourceButtons {
+	float: right;
+	display: flex;
+	fill: var(--ifm-menu-color-active);
+}
+
+.resourceButton {
+	margin-left: 10px;
+}
+
+.resourceInvite {
+	padding-bottom: 10px;
+}

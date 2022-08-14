@@ -5,10 +5,10 @@ function resourceLoaderPlugin() {
 	const widgetMarkupRegex = /\{\{resources:([a-z0-9A-Z-_\/]+)(?::([a-z]+))?\}\}/g;
 
 	return function transformer(markdownAST) {
-		/* markdownAST.children.splice(0, 0, {
+		markdownAST.children.splice(0, 0, {
 			type: 'import',
 			value: "import Resource from '@site/src/components/Resource.jsx';",
-		}); */
+		});
 
 		let found = true;
 		function replace(match, path, lang) {
@@ -16,6 +16,13 @@ function resourceLoaderPlugin() {
 
 			found = true;
 			return resources.flatMap((resource) => {
+				return [
+					{
+						type: 'jsx',
+						value: `<Resource data={${JSON.stringify(resource)}}/>`,
+					},
+				];
+
 				const descriptionLines = resource.description.split('\n');
 				quoteContent = [
 					{
